@@ -4,9 +4,17 @@
 
 A fork to consider minor corrections and updating for future use, including:-
 ### Portuguese
-- make separate processing functions for each language - or handle in calling?
-
 ### Spanish
+
+To update, will need to change:
+
+### Preprocessing/cleaning
+- check for language handling libraries
+- and paramaters in filters
+
+### Pipelines
+- add new versions
+
 
 
 ## Introduction
