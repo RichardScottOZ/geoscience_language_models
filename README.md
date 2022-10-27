@@ -39,10 +39,30 @@ A fork to consider minor corrections and updating for future use, including:-
 - try running some things on a windows machine and see how it goes for tests
 - list requirements for windows 10 trial
 - requirements
+    - have used these elsewhere, doesn't mean this grouping will work on windows
+      - pdfminer=20191125
+      - pandas=1.1.3
+      - python=3.8
+      - tqdm=4.49
+      - filelock=3.0.12
+      - unidecode=1.1.2
+      - spacy=2.3.5
+      - langdetect=1.0.8
+      - pyyaml=5.3.1
+      - pyenchant==3.2.0
+      - particular spacy language models
+        - python3 -m spacy download en_core_web_smd
+        - python3 -m spacy download en_core_web_lg
 
 - gloVe
     - training a large model on windows far from ideal: default C version is definitely much nicer
     - getting a python version of gloVe working is also not trivial, generally
+    
+### Docker
+- containerise a multi language version
+    - see spacy install etc.
+    - want is available with default ubuntu install for enchant re: languages
+        - if not enough, need to add downloading and moving manually
     
 ### enchant gotchas
 - https://pyenchant.github.io/pyenchant/install.html
