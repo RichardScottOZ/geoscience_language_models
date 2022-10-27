@@ -9,7 +9,15 @@ A fork to consider minor corrections and updating for future use, including:-
     - https://spacy.io/models/pt#pt_core_news_sm
     - https://spacy.io/models/pt#pt_core_news_lg
 #### enchant
-- https://stackoverflow.com/questions/69930781/python-pyenchant-portuguese-dictionary-install    
+- https://stackoverflow.com/questions/69930781/python-pyenchant-portuguese-dictionary-install   
+- makefiles
+    - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/Dictionary_pt-BR.mk
+    - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/Dictionary_pt-PT.mk
+- dictionaries
+    - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/pt_BR
+    - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/pt_PT
+    - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/es
+    - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/sv_SE
 
 ### Spanish
 - https://spacy.io/models/es
@@ -32,7 +40,13 @@ A fork to consider minor corrections and updating for future use, including:-
 
 ### enchant gotchas
 - https://pyenchant.github.io/pyenchant/install.html
-
+    - The only provider is hunspell
+    - pip install pyenchant
+    - download the hunspell dictionary files you need (both the .dic and .aff extensions) and put them inside /path/to/enchant/data/mingw<bits>/enchant/share/hunspell. 
+    - You can find many dictionaries in LibreOffice sources.    
+        - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/
+   
+    
 To update, will need to change:
 
 ### Preprocessing/cleaning
