@@ -10,10 +10,18 @@ To update, will need to change:
 
 ### Preprocessing/cleaning
 - check for language handling libraries
-- and paramaters in filters
+- and parameters in filters
+
+#### Prepocessing string
+- spacy.lang.en.stop_words
+- SPACY_MODEL_SM = spacy.load('en_core_web_sm')
+- SPACY_MODEL_LG = spacy.load('en_core_web_lg')
+
 
 ### Pipelines
 - add new versions
+
+
 
 
 
