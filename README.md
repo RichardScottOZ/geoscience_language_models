@@ -3,7 +3,6 @@
 ## Update
 
 A fork to consider minor corrections and updating for future use, including:-
-
 ### Portuguese
 #### spacy
 - https://spacy.io/models/pt
@@ -27,6 +26,12 @@ A fork to consider minor corrections and updating for future use, including:-
 
 - Perhaps add _multi versions of all nrcan libary that will take a language flag?
 - investigate models
+
+### Windows
+- try running some things on a windows machine and see how it goes for tests
+
+### enchant gotchas
+- https://pyenchant.github.io/pyenchant/install.html
 
 To update, will need to change:
 
