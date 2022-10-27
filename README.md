@@ -14,9 +14,18 @@ To update, will need to change:
 
 #### Prepocessing string
 - spacy.lang.en.stop_words
+    - rm_stopwords_spacy
 - SPACY_MODEL_SM = spacy.load('en_core_web_sm')
+    - sentence_tokenize_spacy_sm
+    - tokenize_spacy_sm
 - SPACY_MODEL_LG = spacy.load('en_core_web_lg')
+    - sentence_tokenize_spacy_lg
+    - tokenize_spacy_lg
+    
 
+#### Prepocessing dfcol
+- uses enchant
+- EN_DICT = enchant.Dict("en_CA")
 
 ### Pipelines
 - add new versions
