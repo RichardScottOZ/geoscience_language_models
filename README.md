@@ -1,5 +1,14 @@
 # Geoscience Language Models
 
+## Update
+
+A fork to consider minor corrections and updating for future use, including:-
+### Portuguese
+- make separate processing functions for each language - or handle in calling?
+
+### Spanish
+
+
 ## Introduction
 Language models are the foundation for the predictive text tools that billions of people in their everyday lives. Although most of these language models are trained on vast digital corpora, they are often missing the specialized vocabulary and underlying concepts that are important to specific scientific sub-domains. Herein we report two new language models that were re-trained using geoscientific text to address that knoweldge gap. The raw and processed text from the GEOSCAN publications database, which were used to generate these new language models are reported in a pending Open File. Language model performance and validation are discussed separately in a pending manuscript. The supporting datasets and preferred language models can be used and expanded on in the future to support a range of down-stream natural language processing tasks (e.g., keyword prediction, document similarity, and recommender systems).
 
