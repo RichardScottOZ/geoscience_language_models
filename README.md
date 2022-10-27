@@ -37,6 +37,7 @@ A fork to consider minor corrections and updating for future use, including:-
 
 ### Windows
 - try running some things on a windows machine and see how it goes for tests
+- list requirements for windows 10 trial
 
 ### enchant gotchas
 - https://pyenchant.github.io/pyenchant/install.html
@@ -63,12 +64,20 @@ To update, will need to change:
     - sentence_tokenize_spacy_lg
     - tokenize_spacy_lg
     
-
 #### prepocessing_dfcol
 - uses enchant
     - EN_DICT = enchant.Dict("en_CA")
         - rm_stopwords_spacy # local english import
             - from spacy.lang.en.stop_words import STOP_WORDS
+
+#### prepocessing_dffilter
+- uses enchant
+    - EN_DICT = enchant.Dict("en_CA")
+- filter_non_english
+    - hardcored language filter
+        - if do_filter:
+            return dff[dff.lang == "en"] 
+- so need to check filter codes for various languages
 
 ### Pipelines
 - add new versions
