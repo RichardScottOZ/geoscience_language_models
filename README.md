@@ -3,8 +3,11 @@
 ## Update
 
 A fork to consider minor corrections and updating for future use, including:-
+
 ### Portuguese
 ### Spanish
+
+- Perhaps add _multi versions of all nrcan libary that will take a language flag?
 
 To update, will need to change:
 
