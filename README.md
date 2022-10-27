@@ -5,9 +5,13 @@
 A fork to consider minor corrections and updating for future use, including:-
 
 ### Portuguese
+#### spacy
 - https://spacy.io/models/pt
     - https://spacy.io/models/pt#pt_core_news_sm
     - https://spacy.io/models/pt#pt_core_news_lg
+#### enchant
+- https://stackoverflow.com/questions/69930781/python-pyenchant-portuguese-dictionary-install    
+
 ### Spanish
 - https://spacy.io/models/es
     - https://spacy.io/models/es#es_core_news_sm
@@ -30,7 +34,7 @@ To update, will need to change:
 - check for language handling libraries
 - and parameters in filters
 
-#### Prepocessing string
+#### prepocessing_str
 - spacy.lang.en.stop_words
     - rm_stopwords_spacy
 - SPACY_MODEL_SM = spacy.load('en_core_web_sm')
@@ -41,9 +45,11 @@ To update, will need to change:
     - tokenize_spacy_lg
     
 
-#### Prepocessing dfcol
+#### prepocessing_dfcol
 - uses enchant
-- EN_DICT = enchant.Dict("en_CA")
+    - EN_DICT = enchant.Dict("en_CA")
+        - rm_stopwords_spacy # local english import
+            - from spacy.lang.en.stop_words import STOP_WORDS
 
 ### Pipelines
 - add new versions
