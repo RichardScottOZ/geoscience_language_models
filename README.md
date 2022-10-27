@@ -5,9 +5,24 @@
 A fork to consider minor corrections and updating for future use, including:-
 
 ### Portuguese
+- https://spacy.io/models/pt
+    - https://spacy.io/models/pt#pt_core_news_sm
+    - https://spacy.io/models/pt#pt_core_news_lg
 ### Spanish
+- https://spacy.io/models/es
+    - https://spacy.io/models/es#es_core_news_sm
+    - https://spacy.io/models/es#es_core_news_md
+### Swedish
+- https://spacy.io/models/sv
+    - https://spacy.io/models/sv#sv_core_news_sm
+    - https://spacy.io/models/sv#sv_core_news_lg
+### Finnish
+- https://spacy.io/models/fi
+    - https://spacy.io/models/fi#fi_core_news_sm
+    - https://spacy.io/models/fi#fi_core_news_lg
 
 - Perhaps add _multi versions of all nrcan libary that will take a language flag?
+- investigate models
 
 To update, will need to change:
 
