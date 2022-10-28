@@ -81,7 +81,7 @@ def decide_lang(text:str, lang:str, lang_prob:float, lang_up:str, lang_down:str)
         if lang_up == "pt" and lang_down != "en" or lang_up != "en" and lang_down == "pt":
             return "pt"
         
-        if lang_up != "en" aand lang_down != "en":
+        if lang_up != "en" and lang_down != "en":
             return "pt"
         
     return "pt"   
