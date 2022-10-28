@@ -10,8 +10,9 @@ import re
 import numpy as np
 import string
 import enchant
-import nrcan_p2.data_processing.preprocessing_str as preprocessing_str
-#EN_DICT = enchant.Dict("en_CA")
+#import nrcan_p2.data_processing.preprocessing_str as preprocessing_str
+import nrcan_p2.data_processing.preprocessing_str_pt as preprocessing_str_pt
+
 EN_DICT = enchant.Dict("pt_BR")
 
 SPECIAL_CASES = {
@@ -360,7 +361,6 @@ def compute_best_joining_bkwd_recursive(s_split, en_dict):
 
 
 def rm_stopwords_spacy(dfcol):
-    #from spacy.lang.en.stop_words import STOP_WORDS
     from spacy.lang.pt.stop_words import STOP_WORDS    
     col = dfcol
     for word in STOP_WORDS:
