@@ -148,18 +148,10 @@ def filter_insufficient_real_words(df, col, en_dict=EN_DICT):
         en_dict.check(xx[0].upper() + xx[1:]) or 
         en_dict.check(xx[0] + xx[1:].lower()) for xx in re.sub(f"[{punct}]", " ", x).split()])
 
-    #df['real_words'].to_csv(r'I:\Brazil\RIGEO\dfrealwords.csv')
-    #fix problem here with above not working exactly remove no length rows
-    #df = df.loc[len(df['real_words']) != 0]
     df = df[df['real_words'].map(lambda d: len(d)) > 0]
-    print(df.shape)
-    print(df.real_worlds)
     
     df['real_words_n']= df.real_words.apply(lambda x: len([xx for xx in x if xx == True]))
     df['real_words_perc']= df.real_words.apply(lambda x: len([xx for xx in x if xx == True])/len(x))
-
-    #df['real_words_perc']= 0
-    #df['real_words_perc']= df.real_words.apply(lambda x: len([xx for xx in x if xx == True])/len(x))
 
     df['n_words'] = df.real_words.str.len()
 
