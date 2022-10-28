@@ -30,11 +30,12 @@ def decide_lang(text:str, lang:str, lang_prob:float, lang_up:str, lang_down:str)
     :param lang_up: the language of the previous text
     :param lang_down: the language of the subsequent text
     """
-    if lang == "en":
-        # trust that en were classified correctly...
-        return "en"
 
     if lang == "pt":
+        # trust that en were classified correctly...
+        return "pt"
+    
+    if lang == "es":
         # for french, we have to be careful that it doesn't ditch real (necessary) english text
 
         if len(text) > 50:
@@ -55,14 +56,35 @@ def decide_lang(text:str, lang:str, lang_prob:float, lang_up:str, lang_down:str)
         if lang_up != "pt" and lang_down != "pt":
             return "en"
 
-    if not lang in ['en', 'fr']:
+    if not lang in ['en', 'pt']:
         if lang_up == "es" and lang_down == "es":
             return "pt"
         
         if lang_up == "en" and lang_down == "en":
             return "en"       
         
-    return "en"   
+    if lang == "en":
+        # for french, we have to be careful that it doesn't ditch real (necessary) english text
+
+        if len(text) > 50:
+            # if it's long, trust it
+            return "en"
+
+        if lang_prob >= 0.9:
+            # if it's high prob, trust it
+            return "en"
+
+        if lang_up == "en" and lang_down == "en":
+            # if both the previous and next row are also "fr"
+            return "en
+
+        if lang_up == "pt" lang_down != "en" or lang_up != "en" and lang_down == "pt
+            return "pt
+        
+        if lang_up != "en" aand lang_down != "en":
+            return "pt"
+        
+    return "pt"   
 
 
 def produce_updown_df_grouped(df, col, colset, groupbycol):
