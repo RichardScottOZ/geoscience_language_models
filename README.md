@@ -39,6 +39,7 @@ A fork to consider minor corrections and updating for future use, including:-
 - try running some things on a windows machine and see how it goes for tests
 - list requirements for windows 10 trial
 - requirements
+    - https://github.com/RichardScottOZ/geoscience_language_models/blob/main/project_tools/pyproject.toml
     - have used these elsewhere, doesn't mean this grouping will work on windows
       - pdfminer=20191125
       - pandas=1.1.3
@@ -53,10 +54,25 @@ A fork to consider minor corrections and updating for future use, including:-
       - particular spacy language models
         - python3 -m spacy download en_core_web_smd
         - python3 -m spacy download en_core_web_lg
+        - python3 -m spacy download pt_core_news_sm
+        - python3 -m spacy download pt_core_news_lg
+        
+    - You can now load the model via spacy.load('pt_core_news_sm')
 
 - gloVe
     - training a large model on windows far from ideal: default C version is definitely much nicer
     - getting a python version of gloVe working is also not trivial, generally
+    
+- Scripts
+    - to use these likely git bash is our friend
+    - however will need anaconda running inside git bash for this to work so more scripts to organise
+    - https://discuss.codecademy.com/t/setting-up-conda-in-git-bash/534473
+    - e.g. go here and add the shell script to bashrc C:\Users\nrcan\AppData\Local\Continuum\anaconda3\etc\profile.d
+    
+- Package problems
+    - errors
+    - module 'signal' has no attribute 'SIGALRM'
+
     
 ### Docker
 - containerise a multi language version
