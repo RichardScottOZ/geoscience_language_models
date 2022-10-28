@@ -116,36 +116,36 @@ PIPELINE_GLOVE_PLUS = BASE_PIPELINE_PLUS + [
 # PORTUGUESE PIPELINES
 
 BASE_PIPELINE_CLEAN_PT = [
-    preprocessing_dfcol.rm_dbl_space,
-    preprocessing_dfcol.rm_cid,
-    preprocessing_dfcol.convert_to_ascii,
-    preprocessing_dfcol.rm_nonprintable,
+    preprocessing_dfcol_pt.rm_dbl_space,
+    preprocessing_dfcol_pt.rm_cid,
+    preprocessing_dfcol_pt.convert_to_ascii,
+    preprocessing_dfcol_pt.rm_nonprintable,
     preprocessing_df_filter.filter_no_letter,
-    preprocessing_dfcol.rm_newline_hyphenation,
-    preprocessing_dfcol.rm_newline,    
+    preprocessing_dfcol_pt.rm_newline_hyphenation,
+    preprocessing_dfcol_pt.rm_newline,    
     preprocessing_df_filter.filter_no_real_words_g3letter, 
     preprocessing_df_filter.filter_with_email,
-    preprocessing_dfcol.rm_url,
-    preprocessing_dfcol.rm_doi,
+    preprocessing_dfcol_pt.rm_url,
+    preprocessing_dfcol_pt.rm_doi,
     preprocessing_df_filter.filter_with_phonenumber,
     preprocessing_df_filter.filter_non_english,
 ]
 
 BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN + [
     # e.g. "a+b" -> "a + b"
-    preprocessing_dfcol.add_space_to_various_punct,
+    preprocessing_dfcol_pt.add_space_to_various_punct,
     # remove punct "2+"
-    preprocessing_dfcol.squish_punct,
+    preprocessing_dfcol_pt.squish_punct,
     # remove punct "2 space + "
-    preprocessing_dfcol.squish_spaced_punct_no_bracket,
+    preprocessing_dfcol_pt.squish_spaced_punct_no_bracket,
     # drop > 0.1 punct /len
     preprocessing_df_filter.filter_g10_punct,
     # drop < 0.45 real words (don't forget to cap non cap and remove punct)
     preprocessing_df_filter.filter_insufficient_real_words,
     # run merger 
-    preprocessing_dfcol.merge_words_2,
+    preprocessing_dfcol_pt.merge_words_2,
     # drop deg 
-    preprocessing_dfcol.rm_deg,
+    preprocessing_dfcol_pt.rm_deg,
 ]
 
 PIPELINE_GLOVE_PLUS_PT = BASE_PIPELINE_PLUS_PT + [
