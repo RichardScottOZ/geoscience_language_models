@@ -489,7 +489,7 @@ if __name__ == "__main__":
         print(f'File number range: {NUMBER_RANGE}')
 
     if NFILE_RANGE:
-        print(f'File iter number ragne: {NFILE_RANGE}')
+        print(f'File iter number range: {NFILE_RANGE}')
 
     if PDF_IDS:
         print(f'Number of pdf ids: {len(PDF_IDS)}')
