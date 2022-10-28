@@ -77,6 +77,7 @@ def filter_no_real_words_g3letter(df, col, en_dict=EN_DICT):
     df['is_enchant_word_and_g3l'] = df.apply(lambda row: [is_enchant and (nchar > 3) for is_enchant,nchar in zip(row.is_enchant_word, row.word_char_num)], axis=1)
     df['any_enchant_word_and_g3l'] = df.is_enchant_word_and_g3l.apply(lambda x: any(x))
 
+    #df.to_csv(r'I:\Brazil\RIGEO\dfanyenchantg3.csv')
     return df[df.any_enchant_word_and_g3l]
 
 
@@ -106,6 +107,7 @@ def filter_non_english(df, col, lang_detect_func=langdetect.detect_langs, do_fil
     df['langs_1_prob'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].prob)
     df['langs_1'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].lang)
     df = df.drop(columns='langs')
+    #df.to_csv(r'I:\Brazil\RIGEO\dff_before_nonenglish.csv')
 
     dff = produce_updown_df(df, 'langs_1') 
     dff['lang'] = dff.apply(lambda row: decide_lang_row(row, 
@@ -116,7 +118,7 @@ def filter_non_english(df, col, lang_detect_func=langdetect.detect_langs, do_fil
         lang_down_col='langs_1_down', 
     ), axis=1)
 
-    dff.to_csv(r'I:\Brazil\RIGEO\dff_nonenglish.csv')
+    #dff.to_csv(r'I:\Brazil\RIGEO\dff_nonenglish.csv')
     if do_filter:
         return dff[dff.lang == "pt"] 
     else:
