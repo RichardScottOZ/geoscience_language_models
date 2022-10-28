@@ -59,6 +59,23 @@ BASE_PIPELINE_PLUS = BASE_PIPELINE_CLEAN + [
     preprocessing_dfcol.rm_deg,
 ]
 
+BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN + [
+    # e.g. "a+b" -> "a + b"
+    preprocessing_dfcol.add_space_to_various_punct,
+    # remove punct "2+"
+    preprocessing_dfcol.squish_punct,
+    # remove punct "2 space + "
+    preprocessing_dfcol.squish_spaced_punct_no_bracket,
+    # drop > 0.1 punct /len
+    preprocessing_df_filter.filter_g10_punct,
+    # drop < 0.45 real words (don't forget to cap non cap and remove punct)
+    preprocessing_df_filter.filter_insufficient_real_words,
+    # run merger 
+    preprocessing_dfcol.merge_words_2,
+    # drop deg 
+    preprocessing_dfcol.rm_deg,
+]
+
 # do one with >0.8 percent and nothing fancy after filter phonenumbers
 BASE_PIPE_80 = BASE_PIPELINE_CLEAN + [
     preprocessing_df_filter.filter_l80_real_words
@@ -95,6 +112,47 @@ PIPELINE_GLOVE_PLUS = BASE_PIPELINE_PLUS + [
     preprocessing_dfcol.rm_stopwords_spacy,
 ]
 
+######################
+# PORTUGUESE PIPELINES
+
+BASE_PIPELINE_CLEAN_PT = [
+    preprocessing_dfcol.rm_dbl_space,
+    preprocessing_dfcol.rm_cid,
+    preprocessing_dfcol.convert_to_ascii,
+    preprocessing_dfcol.rm_nonprintable,
+    preprocessing_df_filter.filter_no_letter,
+    preprocessing_dfcol.rm_newline_hyphenation,
+    preprocessing_dfcol.rm_newline,    
+    preprocessing_df_filter.filter_no_real_words_g3letter, 
+    preprocessing_df_filter.filter_with_email,
+    preprocessing_dfcol.rm_url,
+    preprocessing_dfcol.rm_doi,
+    preprocessing_df_filter.filter_with_phonenumber,
+    preprocessing_df_filter.filter_non_english,
+]
+
+BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN + [
+    # e.g. "a+b" -> "a + b"
+    preprocessing_dfcol.add_space_to_various_punct,
+    # remove punct "2+"
+    preprocessing_dfcol.squish_punct,
+    # remove punct "2 space + "
+    preprocessing_dfcol.squish_spaced_punct_no_bracket,
+    # drop > 0.1 punct /len
+    preprocessing_df_filter.filter_g10_punct,
+    # drop < 0.45 real words (don't forget to cap non cap and remove punct)
+    preprocessing_df_filter.filter_insufficient_real_words,
+    # run merger 
+    preprocessing_dfcol.merge_words_2,
+    # drop deg 
+    preprocessing_dfcol.rm_deg,
+]
+
+PIPELINE_GLOVE_PLUS_PT = BASE_PIPELINE_PLUS_PT + [
+    preprocessing_dfcol.tokenize_spacy_lg,
+    preprocessing_dfcol.rm_stopwords_spacy,
+]
+
 ### BERT PREPROCESSING PIPELINES ########################
 
 # V1
@@ -121,4 +179,21 @@ POSTPIPE_BERT_SPACY_2 = [
     preprocessing_str.rm_newline,
     preprocessing_str.sentence_tokenize_spacy_lg,
     preprocessing_str.add_newline,
+]
+
+#########################
+### PORTUGUESE PIPELINES
+
+### GLOVE POSTPROCESSING PIPELINES ########################
+POSTPIPE_GLOVE_PT = [
+    preprocessing_str_pt.rm_punct,     
+    preprocessing_str_pt.lower,
+    preprocessing_str_pt.rm_newline
+]
+
+### BERT POSTPROCESSING PIPELINES ########################
+POSTPIPE_BERT_SPACY_2_PT = [
+    preprocessing_str_pt.rm_newline,
+    preprocessing_str_pt.sentence_tokenize_spacy_lg,
+    preprocessing_str_pt.add_newline,
 ]
