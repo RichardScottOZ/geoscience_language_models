@@ -76,7 +76,7 @@ def decide_lang(text:str, lang:str, lang_prob:float, lang_up:str, lang_down:str)
 
         if lang_up == "en" and lang_down == "en":
             # if both the previous and next row are also "fr"
-            return "en
+            return "en"
 
         if lang_up == "pt" lang_down != "en" or lang_up != "en" and lang_down == "pt
             return "pt
