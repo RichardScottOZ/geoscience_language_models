@@ -120,15 +120,15 @@ BASE_PIPELINE_CLEAN_PT = [
     preprocessing_dfcol_pt.rm_cid,
     preprocessing_dfcol_pt.convert_to_ascii,
     preprocessing_dfcol_pt.rm_nonprintable,
-    preprocessing_df_filter.filter_no_letter,
+    preprocessing_df_filter_pt.filter_no_letter,
     preprocessing_dfcol_pt.rm_newline_hyphenation,
     preprocessing_dfcol_pt.rm_newline,    
-    preprocessing_df_filter.filter_no_real_words_g3letter, 
-    preprocessing_df_filter.filter_with_email,
+    preprocessing_df_filter_pt.filter_no_real_words_g3letter, 
+    preprocessing_df_filter_pt.filter_with_email,
     preprocessing_dfcol_pt.rm_url,
     preprocessing_dfcol_pt.rm_doi,
-    preprocessing_df_filter.filter_with_phonenumber,
-    preprocessing_df_filter.filter_non_english,
+    preprocessing_df_filter_pt.filter_with_phonenumber,
+    preprocessing_df_filter_pt.filter_non_english,
 ]
 
 BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN + [
@@ -139,9 +139,9 @@ BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN + [
     # remove punct "2 space + "
     preprocessing_dfcol_pt.squish_spaced_punct_no_bracket,
     # drop > 0.1 punct /len
-    preprocessing_df_filter.filter_g10_punct,
+    preprocessing_df_filter_pt.filter_g10_punct,
     # drop < 0.45 real words (don't forget to cap non cap and remove punct)
-    preprocessing_df_filter.filter_insufficient_real_words,
+    preprocessing_df_filter_pt.filter_insufficient_real_words,
     # run merger 
     preprocessing_dfcol_pt.merge_words_2,
     # drop deg 
@@ -149,8 +149,8 @@ BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN + [
 ]
 
 PIPELINE_GLOVE_PLUS_PT = BASE_PIPELINE_PLUS_PT + [
-    preprocessing_dfcol.tokenize_spacy_lg,
-    preprocessing_dfcol.rm_stopwords_spacy,
+    preprocessing_dfcol_pt.tokenize_spacy_lg,
+    preprocessing_dfcol_pt.rm_stopwords_spacy,
 ]
 
 ### BERT PREPROCESSING PIPELINES ########################
