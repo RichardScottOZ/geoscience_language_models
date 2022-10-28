@@ -5,6 +5,10 @@ import nrcan_p2.data_processing.preprocessing_dfcol as preprocessing_dfcol
 import nrcan_p2.data_processing.preprocessing_str as preprocessing_str
 import nrcan_p2.data_processing.preprocessing_df_filter as preprocessing_df_filter
 
+import nrcan_p2.data_processing.preprocessing_dfcol_pt as preprocessing_dfcol_pt
+import nrcan_p2.data_processing.preprocessing_str_pt as preprocessing_str_pt
+import nrcan_p2.data_processing.preprocessing_df_filter_pt as preprocessing_df_filter_pt
+
 BASE_PIPELINE = [
     preprocessing_dfcol.rm_dbl_space,
     preprocessing_dfcol.rm_cid,
