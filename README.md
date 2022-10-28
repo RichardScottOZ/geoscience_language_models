@@ -72,6 +72,18 @@ A fork to consider minor corrections and updating for future use, including:-
 - Package problems
     - errors
     - module 'signal' has no attribute 'SIGALRM'
+        - unix only - need a windows variant
+        - could hack a thread thing like this: -
+        ```python
+        import threading
+        t = threading.Timer(seconds, _handle_timeout)
+        try:
+            result = func(*args, **kwargs)
+        finally:
+            pass
+        return result
+        ```
+
 
     
 ### Docker
