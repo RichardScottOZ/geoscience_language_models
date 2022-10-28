@@ -142,7 +142,11 @@ To update, will need to change:
     
 - preprocess_csv_for_modelling will likely need country specific versions, or a parameter
 
-
+####
+- various filters may do unexpected things in pipeline
+    - no real words seems to be quite bad on a small test
+    - likely stop words has some issues try
+        - maybe try nltk over spacy?
 
 ## Original Readme
 
