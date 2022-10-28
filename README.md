@@ -18,6 +18,9 @@ A fork to consider minor corrections and updating for future use, including:-
     - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/pt_PT
     - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/es
     - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/sv_SE
+    
+#### langdetect
+- abbreviation pt
 
 ### Spanish
 - https://spacy.io/models/es
@@ -52,7 +55,7 @@ A fork to consider minor corrections and updating for future use, including:-
       - pyyaml=5.3.1
       - pyenchant==3.2.0
       - particular spacy language models
-        - python3 -m spacy download en_core_web_smd
+        - python3 -m spacy download en_core_web_sm
         - python3 -m spacy download en_core_web_lg
         - python3 -m spacy download pt_core_news_sm
         - python3 -m spacy download pt_core_news_lg
@@ -68,6 +71,8 @@ A fork to consider minor corrections and updating for future use, including:-
     - however will need anaconda running inside git bash for this to work so more scripts to organise
     - https://discuss.codecademy.com/t/setting-up-conda-in-git-bash/534473
     - e.g. go here and add the shell script to bashrc C:\Users\nrcan\AppData\Local\Continuum\anaconda3\etc\profile.d
+    - windows pythonpath setting instead
+    - export PYTHONPATH=/home/ubuntu/geoscience_language_models/project_tools
     
 - Package problems
     - errors
