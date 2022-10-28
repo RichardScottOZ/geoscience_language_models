@@ -5,8 +5,13 @@ import string
 import langdetect
 from nrcan_p2.data_processing.utils import (
     produce_updown_df,
+    #decide_lang_row
+)
+
+from nrcan_p2.data_processing.utils_pt import (
     decide_lang_row
 )
+
 #preprocessing_df_filter_pt.py
 #from nrcan_p2.data_processing.preprocessing_dfcol import (
 from nrcan_p2.data_processing.preprocessing_dfcol_pt import (
@@ -111,6 +116,7 @@ def filter_non_english(df, col, lang_detect_func=langdetect.detect_langs, do_fil
         lang_down_col='langs_1_down', 
     ), axis=1)
 
+    dff.to_csv(r'I:\Brazil\RIGEO\dff_nonenglish.csv')
     if do_filter:
         return dff[dff.lang == "pt"] 
     else:
