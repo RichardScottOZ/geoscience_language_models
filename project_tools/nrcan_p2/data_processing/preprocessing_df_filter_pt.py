@@ -103,20 +103,25 @@ def filter_l50_perc_words_not_real(df, col):
  
 
 def filter_non_english(df, col, lang_detect_func=langdetect.detect_langs, do_filter=True):
-    df['langs'] = df[col].apply(lambda sent: lang_detect_func(sent))
-    df['langs_1_prob'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].prob)
-    df['langs_1'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].lang)
-    df = df.drop(columns='langs')
-    #df.to_csv(r'I:\Brazil\RIGEO\dff_before_nonenglish.csv')
+    ## error here on detection problem skip and do dummy?
+    try:
+        df['langs'] = df[col].apply(lambda sent: lang_detect_func(sent))
+        df['langs_1_prob'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].prob)
+        df['langs_1'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].lang)
+        df = df.drop(columns='langs')
+        #df.to_csv(r'I:\Brazil\RIGEO\dff_before_nonenglish.csv')
 
-    dff = produce_updown_df(df, 'langs_1') 
-    dff['lang'] = dff.apply(lambda row: decide_lang_row(row, 
-        text_col=col,
-        lang_col='langs_1', 
-        lang_prob_col='langs_1_prob',
-        lang_up_col='langs_1_up', 
-        lang_down_col='langs_1_down', 
-    ), axis=1)
+        dff = produce_updown_df(df, 'langs_1') 
+        dff['lang'] = dff.apply(lambda row: decide_lang_row(row, 
+            text_col=col,
+            lang_col='langs_1', 
+            lang_prob_col='langs_1_prob',
+            lang_up_col='langs_1_up', 
+            lang_down_col='langs_1_down', 
+        ), axis=1)
+    except Exception as langdetecte:
+        print("error in running langdetect on df", langdetecte)
+        dff['lang'] = 'en'
 
     #dff.to_csv(r'I:\Brazil\RIGEO\dff_nonenglish.csv')
     if do_filter:
