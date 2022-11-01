@@ -5,6 +5,7 @@ import nrcan_p2.data_processing.preprocessing_dfcol as preprocessing_dfcol
 import nrcan_p2.data_processing.preprocessing_str as preprocessing_str
 import nrcan_p2.data_processing.preprocessing_df_filter as preprocessing_df_filter
 
+#portuguese version
 import nrcan_p2.data_processing.preprocessing_dfcol_pt as preprocessing_dfcol_pt
 import nrcan_p2.data_processing.preprocessing_str_pt as preprocessing_str_pt
 import nrcan_p2.data_processing.preprocessing_df_filter_pt as preprocessing_df_filter_pt
@@ -63,7 +64,7 @@ BASE_PIPELINE_PLUS = BASE_PIPELINE_CLEAN + [
     preprocessing_dfcol.rm_deg,
 ]
 
-BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN + [
+BASE_PIPELINE_PLUS = BASE_PIPELINE_CLEAN + [
     # e.g. "a+b" -> "a + b"
     preprocessing_dfcol.add_space_to_various_punct,
     # remove punct "2+"
@@ -122,20 +123,20 @@ PIPELINE_GLOVE_PLUS = BASE_PIPELINE_PLUS + [
 BASE_PIPELINE_CLEAN_PT = [
     preprocessing_dfcol_pt.rm_dbl_space,
     preprocessing_dfcol_pt.rm_cid,
-    preprocessing_dfcol_pt.convert_to_ascii,
+    #preprocessing_dfcol_pt.convert_to_ascii,
     preprocessing_dfcol_pt.rm_nonprintable,
     preprocessing_df_filter_pt.filter_no_letter,
     preprocessing_dfcol_pt.rm_newline_hyphenation,
     preprocessing_dfcol_pt.rm_newline,    
-    preprocessing_df_filter_pt.filter_no_real_words_g3letter, 
+    #preprocessing_df_filter_pt.filter_no_real_words_g3letter, 
     preprocessing_df_filter_pt.filter_with_email,
     preprocessing_dfcol_pt.rm_url,
     preprocessing_dfcol_pt.rm_doi,
     preprocessing_df_filter_pt.filter_with_phonenumber,
-    preprocessing_df_filter_pt.filter_non_english,
+    preprocessing_df_filter_pt.filter_non_english,  ##actually trying to do non_portuguese
 ]
 
-BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN + [
+BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN_PT + [
     # e.g. "a+b" -> "a + b"
     preprocessing_dfcol_pt.add_space_to_various_punct,
     # remove punct "2+"
@@ -145,7 +146,7 @@ BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN + [
     # drop > 0.1 punct /len
     preprocessing_df_filter_pt.filter_g10_punct,
     # drop < 0.45 real words (don't forget to cap non cap and remove punct)
-    preprocessing_df_filter_pt.filter_insufficient_real_words,
+    #preprocessing_df_filter_pt.filter_insufficient_real_words,
     # run merger 
     preprocessing_dfcol_pt.merge_words_2,
     # drop deg 
