@@ -108,8 +108,8 @@ def filter_non_english(df, col, lang_detect_func=langdetect.detect_langs, do_fil
         df['langs'] = df[col].apply(lambda sent: lang_detect_func(sent))
         df['langs_1_prob'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].prob)
         df['langs_1'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].lang)
+        #df.to_csv(r'I:\Brazil\RIGEO\dff_before_nonenglish_withlangs.csv')
         df = df.drop(columns='langs')
-        #df.to_csv(r'I:\Brazil\RIGEO\dff_before_nonenglish.csv')
 
         dff = produce_updown_df(df, 'langs_1') 
         dff['lang'] = dff.apply(lambda row: decide_lang_row(row, 
@@ -121,10 +121,14 @@ def filter_non_english(df, col, lang_detect_func=langdetect.detect_langs, do_fil
         ), axis=1)
     except Exception as langdetecte:
         print("error in running langdetect on df", langdetecte)
-        df['langs'] = 'en'
+        df['langs'] = ['en']
         
-        df['langs_1_prob'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].prob)
-        df['langs_1'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].lang)
+        #df['langs_1_prob'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].prob)
+        #df['langs_1'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].lang)
+		#fake it so updown still runs
+        df['langs_1_prob'] = 0.9999999
+        df['langs_1'] = 'en'
+
         df = df.drop(columns='langs')
         #df.to_csv(r'I:\Brazil\RIGEO\dff_before_nonenglish.csv')
 
