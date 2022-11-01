@@ -121,7 +121,7 @@ def filter_non_english(df, col, lang_detect_func=langdetect.detect_langs, do_fil
         ), axis=1)
     except Exception as langdetecte:
         print("error in running langdetect on df", langdetecte)
-        df['langs'] = ['en']
+        df['langs'] = 'en'
         
         #df['langs_1_prob'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].prob)
         #df['langs_1'] = df['langs'].apply(lambda x: None if len(x) <1 else x[0].lang)
