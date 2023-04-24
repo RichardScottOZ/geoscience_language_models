@@ -73,6 +73,7 @@ A fork to consider minor corrections and updating for future use, including:-
     - e.g. go here and add the shell script to bashrc C:\Users\nrcan\AppData\Local\Continuum\anaconda3\etc\profile.d
     - windows pythonpath setting instead
     - export PYTHONPATH=/home/ubuntu/geoscience_language_models/project_tools
+    - conda init bash in git bash too
     
 - Package problems
     - errors
@@ -132,7 +133,7 @@ To update, will need to change:
 - uses enchant
     - EN_DICT = enchant.Dict("en_CA")
 - filter_non_english
-    - hardcored language filter
+    - hardcoded language filter
         - if do_filter:
             return dff[dff.lang == "en"] 
 - so need to check filter codes for various languages
