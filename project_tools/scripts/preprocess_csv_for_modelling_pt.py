@@ -198,6 +198,8 @@ def process_pre_pipeline_step(col:str,
 
     # save it to file
     df_per_pdf.set_index(df_per_pdf.columns[0]).to_csv(next_temp_file)
+    
+    print("current df_per_pdf size is:", df_per_pdf.shape[0])
 
     return True 
 

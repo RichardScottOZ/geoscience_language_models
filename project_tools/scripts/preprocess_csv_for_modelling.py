@@ -3,6 +3,7 @@
 # 
 import nrcan_p2.data_processing.preprocessing_dfcol as preprocessing_dfcol
 import nrcan_p2.data_processing.preprocessing_dfcol as preprocessing_str
+
 import nrcan_p2.data_processing.pipelines as pipelines
 from typing import Callable, List, Tuple, Dict
 import pandas as pd
@@ -291,12 +292,16 @@ def process_dir(input_dir: str,
         if next_temp_file.exists():
             with open(next_temp_file, 'r') as f:
                 text = f.read()
-        else:
-            df_per_pdf = pd.read_csv(temp_file, dtype={next_col:"str"})
-            text = " ".join(df_per_pdf[next_col].tolist())
-            with open(next_temp_file, 'w') as f:
-                f.write(text)
-
+        else: 
+            try:
+                df_per_pdf = pd.read_csv(temp_file, dtype={next_col:"str"})
+                text = " ".join(df_per_pdf[next_col].tolist())
+                with open(next_temp_file, 'w') as f:
+                    f.write(text)
+            except Exception as notexte:
+                print("error r:", notexte)
+                continue
+                
         temp_file = next_temp_file
 
         for i, postprocessing_func in enumerate(postprocessing_pipe_funcs):
