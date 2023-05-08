@@ -54,11 +54,11 @@ A fork to consider minor corrections and updating for future use, including:-
       - langdetect=1.0.8
       - pyyaml=5.3.1
       - pyenchant==3.2.0
-      - particular spacy language models
-        - python3 -m spacy download en_core_web_sm
-        - python3 -m spacy download en_core_web_lg
-        - python3 -m spacy download pt_core_news_sm
-        - python3 -m spacy download pt_core_news_lg
+      - particular spacy language models  in environment
+        - python -m spacy download en_core_web_sm
+        - python -m spacy download en_core_web_lg
+        - python -m spacy download pt_core_news_sm
+        - python -m spacy download pt_core_news_lg
         
     - You can now load the model via spacy.load('pt_core_news_sm')
 
@@ -104,6 +104,7 @@ A fork to consider minor corrections and updating for future use, including:-
     - download the hunspell dictionary files you need (both the .dic and .aff extensions) and put them inside /path/to/enchant/data/mingw<bits>/enchant/share/hunspell. 
     - You can find many dictionaries in LibreOffice sources.    
         - https://cgit.freedesktop.org/libreoffice/dictionaries/tree/
+- on linux need sudo apt-get install hunspell-pt-br for example after installing enchant package
    
     
 To update, will need to change:
