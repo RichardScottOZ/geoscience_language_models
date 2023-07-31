@@ -49,6 +49,9 @@ def rm_punct(text: str):
 def lower(text: str):
     return text.lower()
 
+def donothing(text: str):
+    return text
+
 
 def rm_stopwords_spacy(text, stop_words=STOP_WORDS):
     for word in stop_words:
