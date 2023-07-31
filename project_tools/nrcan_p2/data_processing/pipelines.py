@@ -6,9 +6,9 @@ import nrcan_p2.data_processing.preprocessing_str as preprocessing_str
 import nrcan_p2.data_processing.preprocessing_df_filter as preprocessing_df_filter
 
 #portuguese version
-import nrcan_p2.data_processing.preprocessing_dfcol_pt as preprocessing_dfcol_pt
-import nrcan_p2.data_processing.preprocessing_str_pt as preprocessing_str_pt
-import nrcan_p2.data_processing.preprocessing_df_filter_pt as preprocessing_df_filter_pt
+#import nrcan_p2.data_processing.preprocessing_dfcol_pt as preprocessing_dfcol_pt
+#import nrcan_p2.data_processing.preprocessing_str_pt as preprocessing_str_pt
+#import nrcan_p2.data_processing.preprocessing_df_filter_pt as preprocessing_df_filter_pt
 
 BASE_PIPELINE = [
     preprocessing_dfcol.rm_dbl_space,
@@ -121,42 +121,65 @@ PIPELINE_GLOVE_PLUS = BASE_PIPELINE_PLUS + [
 # PORTUGUESE PIPELINES
 
 BASE_PIPELINE_CLEAN_PT = [
-    preprocessing_dfcol_pt.rm_dbl_space,
-    preprocessing_dfcol_pt.rm_cid,
-    #preprocessing_dfcol_pt.convert_to_ascii,
-    preprocessing_dfcol_pt.rm_nonprintable,
-    preprocessing_df_filter_pt.filter_no_letter,
-    preprocessing_dfcol_pt.rm_newline_hyphenation,
-    preprocessing_dfcol_pt.rm_newline,    
+    #preprocessing_dfcol_pt.rm_dbl_space,
+    #preprocessing_dfcol_pt.rm_cid,
+    #####preprocessing_dfcol_pt.convert_to_ascii,
+    #preprocessing_dfcol_pt.rm_nonprintable,
+    #preprocessing_df_filter_pt.filter_no_letter,
+    #preprocessing_dfcol_pt.rm_newline_hyphenation,
+    #preprocessing_dfcol_pt.rm_newline,    
     #preprocessing_df_filter_pt.filter_no_real_words_g3letter, 
-    preprocessing_df_filter_pt.filter_with_email,
-    preprocessing_dfcol_pt.rm_url,
-    preprocessing_dfcol_pt.rm_doi,
-    preprocessing_df_filter_pt.filter_with_phonenumber,
-    preprocessing_df_filter_pt.filter_non_english,  ##actually trying to do non_portuguese
+    #preprocessing_df_filter_pt.filter_with_email,
+    #preprocessing_dfcol_pt.rm_url,
+    #preprocessing_dfcol_pt.rm_doi,
+    #preprocessing_df_filter_pt.filter_with_phonenumber,
+    #preprocessing_df_filter_pt.filter_non_english,  ##actually trying to do non_portuguese
 ]
 
 BASE_PIPELINE_PLUS_PT = BASE_PIPELINE_CLEAN_PT + [
     # e.g. "a+b" -> "a + b"
-    preprocessing_dfcol_pt.add_space_to_various_punct,
+    #preprocessing_dfcol_pt.add_space_to_various_punct,
     # remove punct "2+"
-    preprocessing_dfcol_pt.squish_punct,
+    #preprocessing_dfcol_pt.squish_punct,
     # remove punct "2 space + "
-    preprocessing_dfcol_pt.squish_spaced_punct_no_bracket,
+    #preprocessing_dfcol_pt.squish_spaced_punct_no_bracket,
     # drop > 0.1 punct /len
-    preprocessing_df_filter_pt.filter_g10_punct,
+    #preprocessing_df_filter_pt.filter_g10_punct,
     # drop < 0.45 real words (don't forget to cap non cap and remove punct)
     #preprocessing_df_filter_pt.filter_insufficient_real_words,
     # run merger 
-    preprocessing_dfcol_pt.merge_words_2,
+    #preprocessing_dfcol_pt.merge_words_2,
     # drop deg 
-    preprocessing_dfcol_pt.rm_deg,
+    #preprocessing_dfcol_pt.rm_deg,
 ]
 
 PIPELINE_GLOVE_PLUS_PT = BASE_PIPELINE_PLUS_PT + [
-    preprocessing_dfcol_pt.tokenize_spacy_lg,
-    preprocessing_dfcol_pt.rm_stopwords_spacy,
+    #preprocessing_dfcol_pt.tokenize_spacy_lg,
+    #preprocessing_dfcol_pt.rm_stopwords_spacy,
 ]
+
+
+###### ASX PIPELINES ###################################
+BASE_PIPELINE_ASX = [
+    preprocessing_dfcol.rm_dbl_space,
+    preprocessing_dfcol.rm_cid,
+    preprocessing_dfcol.convert_to_ascii,
+    preprocessing_dfcol.rm_nonprintable,
+    #preprocessing_df_filter.filter_no_letter,
+    #preprocessing_dfcol.rm_word_all_punct,
+    preprocessing_dfcol.rm_newline_hyphenation,
+    #preprocessing_dfcol.rm_beg_end_word_punct,
+    #preprocessing_dfcol.rm_punct_mid_punct,
+    #preprocessing_dfcol.strip_space,
+    #preprocessing_df_filter.filter_l2_word,
+    #preprocessing_df_filter.filter_l4_letter,
+    #preprocessing_dfcol.rm_mid_word_punct,
+    #preprocessing_dfcol.rm_non_textual_punct,
+    #preprocessing_dfcol.rm_newline,
+    #preprocessing_dfcol.merge_words,
+    #preprocessing_df_filter.filter_no_real_words_g3letter,
+]
+
 
 ### BERT PREPROCESSING PIPELINES ########################
 
@@ -191,14 +214,25 @@ POSTPIPE_BERT_SPACY_2 = [
 
 ### GLOVE POSTPROCESSING PIPELINES ########################
 POSTPIPE_GLOVE_PT = [
-    preprocessing_str_pt.rm_punct,     
-    preprocessing_str_pt.lower,
-    preprocessing_str_pt.rm_newline
+    #preprocessing_str_pt.rm_punct,     
+    #preprocessing_str_pt.lower,
+    #preprocessing_str_pt.rm_newline
 ]
 
 ### BERT POSTPROCESSING PIPELINES ########################
 POSTPIPE_BERT_SPACY_2_PT = [
-    preprocessing_str_pt.rm_newline,
-    preprocessing_str_pt.sentence_tokenize_spacy_lg,
-    preprocessing_str_pt.add_newline,
+    #preprocessing_str_pt.rm_newline,
+    #preprocessing_str_pt.sentence_tokenize_spacy_lg,
+    #preprocessing_str_pt.add_newline,
 ]
+
+
+### ASX POSTPROCESSING PIPELINES ###########################
+POSTPIPE_GLOVE_ASX = [
+    preprocessing_str.donothing,
+    #preprocessing_str_pt.lower,
+    #preprocessing_str_pt.rm_newline
+]
+
+
+print(BASE_PIPELINE_ASX)
